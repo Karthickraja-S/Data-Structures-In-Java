@@ -135,6 +135,21 @@ class LinkedList<T> implements Iterable<T>{
        };
     }
 
+    public void reverse()
+    {
+        Node currentNode = head;
+        Node previousNode = null;
+        Node nextNode;
+        while(currentNode!=null)
+        {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        head=previousNode;
+    }
+
 }
 public class LinkedListImple {
     public static void main(String[] args) {
@@ -158,6 +173,7 @@ public class LinkedListImple {
         list.display();
 
         list.insertLast(5);
+        list.insertAtPos(6,0);
 
         // same to arrays if i need to use forEach or iterator then need to implement iterator interface.
         Iterator it = list.iterator();
@@ -166,5 +182,8 @@ public class LinkedListImple {
             System.out.print(it.next()+"->");
         }
         System.out.println("null");
+
+        list.reverse();
+        list.display();
     }
 }
